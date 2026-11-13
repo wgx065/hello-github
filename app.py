@@ -47,7 +47,7 @@ st.write("***An advanced Python-powered solution for next-level automation.***")
 st.write("---")
 
 # 4. 交互体验区
-user_input = st.text_input("【 输入测试数据 Input Data 】", "随便打几个字试试...")
+user_input = st.text_input("【 输入测试数据 Input Data 】", placeholder="随便打几个字试试...")
 
 if st.button("🚀 INITIALIZE ENGINE (启动引擎)"):
     if user_input:
