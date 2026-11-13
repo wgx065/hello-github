@@ -43,8 +43,8 @@ h1 {
    全局背景与组件样式
    ========================================== */
 [data-testid="stAppViewContainer"] {
-    background-color: #0E1117;
-    color: #FAFAFA;
+    background-color: #0E1117 !important;
+    color: #FAFAFA !important;
 }
 
 /* 主标题特效 */
@@ -83,7 +83,7 @@ h1 {
 /* 2. 左侧边栏：强制恢复黑底绿边，并去掉原生留白 */
 [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
     background-color: #1A1F2B !important;
-    border-right: 2px solid #00FFAA;
+    border-right: 2px solid #00FFAA !important;
     padding-top: 0rem !important; /* 清零顶部留白 */
 }
 
@@ -103,12 +103,16 @@ h1 {
     font-weight: bold;
 }
 
-[data-testid="stSidebar"] div[data-testid="stAlert"] {
+/* 深度强制修改侧边栏提示框 */
+[data-testid="stSidebar"] .stAlert, 
+[data-testid="stSidebar"] div[role="alert"] {
     background-color: #0E1117 !important; 
     border: 1px solid #00FFAA !important;
 }
 
-[data-testid="stSidebar"] div[data-testid="stAlert"] p {
+[data-testid="stSidebar"] .stAlert p, 
+[data-testid="stSidebar"] div[role="alert"] p,
+[data-testid="stSidebar"] div[role="alert"] div {
     color: #00FFAA !important; 
 }
 </style>
