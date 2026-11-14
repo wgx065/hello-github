@@ -32,22 +32,11 @@ if uploaded_images:
         draw = ImageDraw.Draw(img)
         
         # 智能匹配字体（优先本地 Windows，其次云端 Linux）
-        font_paths = [
-            "C:/Windows/Fonts/msyhbd.ttc",       # Windows 微软雅黑粗体
-            "C:/Windows/Fonts/simhei.ttf",       # Windows 黑体
-            "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc", # 云端 Linux 文泉驿
-            "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf", # 云端备用
-        ]
-        
-        font = None
-        for path in font_paths:
-            try:
-                font = ImageFont.truetype(path, size)
-                break
-            except IOError:
-                continue
-                
-        if font is None:
+                # 读取项目文件夹里的自定义字体
+        try:
+            font = ImageFont.truetype("myfont.ttf", size)
+        except IOError:
+            # 如果没找到，就用默认字体保底（会变方块，但不会崩溃）
             font = ImageFont.load_default()
             
         # 获取文字长宽
@@ -68,7 +57,7 @@ if uploaded_images:
         draw.text(
             (x, y), text, font=font, 
             fill=(255, 255, 255, alpha),       # 白色文字
-            stroke_width=2,                    # 描边加粗
+            stroke_width=5,                    # 描边加粗
             stroke_fill=(0, 0, 0, int(alpha * 0.7)) # 黑色半透明描边
         )
         return img
